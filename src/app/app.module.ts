@@ -9,6 +9,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { FotoModule } from './foto/foto.module';
 import { PainelModule } from './painel/painel.module';
 
+import {routing} from './app.routes';
 import 'rxjs/add/operator/map';
 
 @NgModule({
@@ -16,7 +17,7 @@ import 'rxjs/add/operator/map';
     AppComponent, ListagemComponent, CadastroComponent
   ],
   imports: [
-    BrowserModule, FotoModule, HttpModule, PainelModule
+    BrowserModule, FotoModule, HttpModule, PainelModule, routing
   ],
   providers: [],
   bootstrap: [AppComponent]
