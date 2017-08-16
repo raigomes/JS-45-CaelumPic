@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title:String = 'CaelumPic';
+  title:string = 'CaelumPic';
+  fotos: Object[];
+
+  //Faz uma requisicao GET, transforma em um array e atribui a "fotos"
+  constructor(http:Http) {
+    http.get("http://localhost:3000/v1/fotos")
+        .map(res => res.json())
+        .subscribe(fotos => {
+          console.log(fotos);
+        });
+  }
 }
