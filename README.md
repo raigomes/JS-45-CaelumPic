@@ -1,5 +1,8 @@
 # Caelumpic
 
+Photo App developed during JS-45 Caelum's course.
+Teacher Flavio Almeida (flavio.almeida@caelum.com.br)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 
 ## Development server
