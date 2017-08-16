@@ -15,7 +15,7 @@ export class AppComponent {
     http.get("http://localhost:3000/v1/fotos")
         .map(res => res.json())
         .subscribe(fotos => {
-          console.log(fotos);
+          this.fotos = fotos;
         });
   }
 }
