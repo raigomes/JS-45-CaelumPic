@@ -3,27 +3,34 @@
     </header>
     <section class="container">
         <div class="row">
-            <form #meuFormulario="ngForm" (submit)="cadastrar($event);" class="col-sm-6">
+            <form [formGroup]="meuForm" (submit)="cadastrar($event);" class="col-sm-6">
                 <div class="form-group">
                     <label>Título</label>
-                    <input #titulo="ngModel" name="titulo" [(ngModel)]="foto.titulo" class="form-control" required>
-                    <span class="form-control alert-danger" *ngIf="titulo.invalid">
-                        Titulo Obrigatório
-                    </span>
+                    <input formControlName="titulo" name="titulo" [(ngModel)]="foto.titulo" class="form-control">
+                    <div *ngIf="meuForm.controls.titulo.invalid">
+                        <span class="form-control alert-danger" *ngIf="meuForm.controls.titulo.errors.required">
+                            Titulo Obrigatório
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>URL</label>
-                    <input name="url" [(ngModel)]="foto.url" class="form-control">
+                    <input formControlName="url" name="url" [(ngModel)]="foto.url" class="form-control">
+                    <div *ngIf="meuForm.controls.url.invalid">
+                        <span class="form-control alert-danger" *ngIf="meuForm.controls.url.errors.required">
+                            Url Obrigatória
+                        </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Descrição</label>
-                    <textarea name="descricao" [(ngModel)]="foto.descricao" class="form-control">
+                    <textarea formControlName="descricao" name="descricao" [(ngModel)]="foto.descricao" class="form-control">
                     </textarea>
                 </div>
      
                 <a [routerLink]="['']" class="btn btn-default">Voltar</a>
      
-                <button type="submit" class="btn btn-primary" [disabled]="meuFormulario.form.invalid">
+                <button type="submit" class="btn btn-primary" [disabled]="meuForm.invalid">
                     Salvar
                 </button>
             </form>
