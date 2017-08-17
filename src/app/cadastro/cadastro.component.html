@@ -3,18 +3,18 @@
     </header>
     <section class="container">
         <div class="row">
-            <form class="col-sm-6">
+            <form (submit)="cadastrar($event);" class="col-sm-6">
                 <div class="form-group">
                     <label>Título</label>
-                    <input name="titulo" class="form-control">
+                    <input name="titulo" [(ngModel)]="foto.titulo" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>URL</label>
-                    <input name="url" class="form-control">
+                    <input name="url" [(ngModel)]="foto.url" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Descrição</label>
-                    <textarea name="descricao" class="form-control">
+                    <textarea name="descricao" [(ngModel)]="foto.descricao" class="form-control">
                     </textarea>
                 </div>
      

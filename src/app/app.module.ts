@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ListagemComponent } from './listagem/listagem.component';
@@ -17,7 +18,7 @@ import 'rxjs/add/operator/map';
     AppComponent, ListagemComponent, CadastroComponent
   ],
   imports: [
-    BrowserModule, FotoModule, HttpModule, PainelModule, routing
+    BrowserModule, FotoModule, HttpModule, PainelModule, FormsModule, routing
   ],
   providers: [],
   bootstrap: [AppComponent]
