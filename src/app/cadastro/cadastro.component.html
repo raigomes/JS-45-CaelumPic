@@ -11,6 +11,9 @@
                         <span class="form-control alert-danger" *ngIf="meuForm.controls.titulo.errors.required">
                             Titulo Obrigatório
                         </span>
+                        <span class="form-control alert-danger" *ngIf="meuForm.controls.titulo.errors.minlength">
+                            Deve ter no mínimo 4 caracteres
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
