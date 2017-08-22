@@ -3,7 +3,13 @@ import { Http, Headers, Response } from '@angular/http';
 import { FotoComponent } from './foto.component';
 import { Observable } from 'rxjs';
 
-@Injectable()
+/**
+ * Service é uma classe que encapsula as consultas em uma API Rest
+ * 
+ */
+
+//Anotação de Service
+@Injectable() 
 export class FotoService {
 
     http: Http;
@@ -22,7 +28,7 @@ export class FotoService {
         return this.http.get(this.url).map(res => res.json());
     }
 
-    cadadastra(foto: FotoComponent): Observable<Response> {
+    cadastra(foto: FotoComponent): Observable<Response> {
 
         const headers = this.headers;
         
@@ -30,7 +36,7 @@ export class FotoService {
     }
 
     remove(foto: FotoComponent) {
-        return this.http.delete(this.url + '/' + foto._id);
+        return this.http.delete(this.url + '/' + foto.id);
     }
 
     buscaPorId(id: string) {

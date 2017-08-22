@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { FotoComponent } from '../foto/foto.component';
+import { FotoService } from '../foto/foto.service';
 
 @Component({
   selector: 'cadastro',
@@ -10,11 +11,11 @@ import { FotoComponent } from '../foto/foto.component';
 })
 export class CadastroComponent {    
     foto:FotoComponent = new FotoComponent();
-    http:Http;
+    service:FotoService;
     meuForm:FormGroup;
 
-    constructor(http:Http, fb:FormBuilder) {
-        this.http = http;
+    constructor(service:FotoService, fb:FormBuilder) {
+        this.service = service;
         this.meuForm = fb.group({
             titulo: ['',
                     Validators.compose(
@@ -29,17 +30,15 @@ export class CadastroComponent {
     cadastrar(event:Event) {
         event.preventDefault();
 
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        this.http.post('http://localhost:3000/v1/fotos', 
-                        JSON.stringify(this.foto),
-                        {headers})
-                 .subscribe(
-                        () => this.foto = new FotoComponent(),
-                        err => console.log(err)
-                 );
-                 
-        //alert(JSON.stringify(this.foto));
+        this.service.cadastra(this.foto)
+                    .subscribe(
+                        () => {
+                            console.log("OK");
+                            this.foto = new FotoComponent();
+                        },
+                        err => {
+                            console.log(err);
+                        }
+                    );
     }
 }
