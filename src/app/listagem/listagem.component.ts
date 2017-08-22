@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
+<<<<<<< HEAD
 import { FotoComponent } from '../foto/foto.component';
+=======
+>>>>>>> b09b2d294e2ebb5ca20102154295dd2e6cf8c078
 import { FotoService } from '../foto/foto.service';
 
 @Component({
@@ -11,17 +14,24 @@ import { FotoService } from '../foto/foto.service';
 export class ListagemComponent {
   title:string = 'CaelumPic';
   fotos:Object[];
+<<<<<<< HEAD
   service:FotoService;
   mensagem:string = '';
 
   // Atualizando para FotoService
   constructor(service:FotoService) {
     this.service = service; 
+=======
+
+  // Atualizando para FotoService
+  constructor(service:FotoService) {
+>>>>>>> b09b2d294e2ebb5ca20102154295dd2e6cf8c078
     service.lista()
            .subscribe(fotos => {
              this.fotos = fotos;
            });
   }
+<<<<<<< HEAD
 
   remove (foto:FotoComponent) {
     this.service.remove(foto)
@@ -48,4 +58,6 @@ export class ListagemComponent {
 
     return <FotoComponent[]> novasFotos;
   }
+=======
+>>>>>>> b09b2d294e2ebb5ca20102154295dd2e6cf8c078
 }

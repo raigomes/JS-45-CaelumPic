@@ -36,7 +36,11 @@ export class FotoService {
     }
 
     remove(foto: FotoComponent) {
+<<<<<<< HEAD
         return this.http.delete(this.url + '/' + foto._id);
+=======
+        return this.http.delete(this.url + '/' + foto.id);
+>>>>>>> b09b2d294e2ebb5ca20102154295dd2e6cf8c078
     }
 
     buscaPorId(id: string) {
