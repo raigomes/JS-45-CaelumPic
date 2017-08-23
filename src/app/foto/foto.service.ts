@@ -29,7 +29,7 @@ export class FotoService {
     }
 
     //Cria ou Atualiza uma foto
-    cadastra(foto: FotoComponent): Observable<any> {
+    cadastra(foto: FotoComponent): Observable<MensagemCadastro> {
 
         const headers = this.headers;
         
@@ -38,7 +38,7 @@ export class FotoService {
                                  JSON.stringify(foto), 
                                  { headers })
                             .map(
-                                () => ({mensagem: 'FotoAlterada', inclusao: false})
+                                () => new MensagemCadastro('Foto alterada', false)
                             );    
         }    
         else {
@@ -46,7 +46,7 @@ export class FotoService {
                                   JSON.stringify(foto), 
                                   { headers })
                             .map(
-                                () => ({mensagem: 'FotoIncluida', inclusao: true})
+                                () => new MensagemCadastro('Foto incluida', true)
                             );
         }
     }
@@ -57,5 +57,18 @@ export class FotoService {
 
     buscaPorId(id: string) {
         return this.http.get(this.url + '/' + id).map(res => res.json());
+    }
+}
+
+export class MensagemCadastro {
+
+    constructor(private _mensagem:string, private _inclusao:boolean){}
+
+    get mensagem() {
+        return this._mensagem;
+    }
+
+    get inclusao() {
+        return this._inclusao;
     }
 }
