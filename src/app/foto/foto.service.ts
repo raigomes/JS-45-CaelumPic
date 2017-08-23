@@ -29,14 +29,26 @@ export class FotoService {
     }
 
     //Cria ou Atualiza uma foto
-    cadastra(foto: FotoComponent): Observable<Response> {
+    cadastra(foto: FotoComponent): Observable<any> {
 
         const headers = this.headers;
         
-        if (foto._id) 
-            return this.http.put(this.url + "/" + foto._id, JSON.stringify(foto), { headers });        
-        else
-            return this.http.post(this.url, JSON.stringify(foto), { headers });
+        if (foto._id) {
+            return this.http.put(this.url + "/" + foto._id, 
+                                 JSON.stringify(foto), 
+                                 { headers })
+                            .map(
+                                () => ({mensagem: 'FotoAlterada', inclusao: false})
+                            );    
+        }    
+        else {
+            return this.http.post(this.url, 
+                                  JSON.stringify(foto), 
+                                  { headers })
+                            .map(
+                                () => ({mensagem: 'FotoIncluida', inclusao: false})
+                            );
+        }
     }
 
     remove(foto: FotoComponent) {
