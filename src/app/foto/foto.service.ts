@@ -46,7 +46,7 @@ export class FotoService {
                                   JSON.stringify(foto), 
                                   { headers })
                             .map(
-                                () => ({mensagem: 'FotoIncluida', inclusao: false})
+                                () => ({mensagem: 'FotoIncluida', inclusao: true})
                             );
         }
     }

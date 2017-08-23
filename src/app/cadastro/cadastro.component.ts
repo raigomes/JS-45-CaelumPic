@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { FotoComponent } from '../foto/foto.component';
@@ -15,9 +15,20 @@ export class CadastroComponent {
     service:FotoService;
     meuForm:FormGroup;
     route:ActivatedRoute;
+    router:Router;
     mensagem:string = '';
 
-    constructor(service:FotoService, fb:FormBuilder, route:ActivatedRoute) {
+    /**
+     * 
+     * @param service Importa o serviço que acessa a API de fotos
+     * @param fb 
+     * @param route Pega os parametros da url (GET)
+     * @param router Define os parâmetros de navegação
+     */
+    constructor(service:FotoService, 
+                fb:FormBuilder, 
+                route:ActivatedRoute, 
+                router:Router) {
         this.service = service;
         this.meuForm = fb.group({
             titulo: ['',
@@ -36,6 +47,7 @@ export class CadastroComponent {
                             .subscribe(foto => this.foto = foto);
             }
         });
+        this.router = router;
     }
 
     cadastrar(event:Event) {
@@ -46,6 +58,8 @@ export class CadastroComponent {
                         res => {
                             this.mensagem = res.mensagem;
                             this.foto = new FotoComponent();
+                            
+                            if(!res.inclusao) this.router.navigate(['']);
                         },
                         err => {
                             console.log(err);
