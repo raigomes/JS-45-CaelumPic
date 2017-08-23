@@ -38,7 +38,7 @@ export class FotoService {
                                  JSON.stringify(foto), 
                                  { headers })
                             .map(
-                                () => new MensagemCadastro('Foto alterada', false)
+                                () => new MensagemCadastro('Foto alterada')
                             );    
         }    
         else {
@@ -62,7 +62,7 @@ export class FotoService {
 
 export class MensagemCadastro {
 
-    constructor(private _mensagem:string, private _inclusao:boolean){}
+    constructor(private _mensagem:string, private _inclusao:boolean=false){}
 
     get mensagem() {
         return this._mensagem;
