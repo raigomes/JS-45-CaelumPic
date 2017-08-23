@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FotoComponent } from './foto.component';
 import { FiltroPorTitulo } from './foto.pipes';
 
+import { Foto } from './foto';
 import { FotoService } from './foto.service';
 
 @NgModule({
@@ -13,7 +14,7 @@ import { FotoService } from './foto.service';
     FotoComponent, FiltroPorTitulo
   ],
   providers: [
-    FotoService
+    FotoService, Foto
   ]
 })
 export class FotoModule { }

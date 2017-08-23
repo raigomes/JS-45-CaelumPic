@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import { Foto } from './foto';
 import { FotoComponent } from './foto.component';
 import { Observable } from 'rxjs';
 
@@ -16,6 +17,7 @@ export class FotoService {
     headers: Headers;
     url: string = 'http://localhost:3000/v1/fotos';
 
+
     constructor(http: Http) {
 
         this.http = http;
@@ -23,13 +25,13 @@ export class FotoService {
         this.headers.set('Content-Type', 'application/json');
     }
 
-    lista(): Observable<FotoComponent[]> {
+    lista(): Observable<Foto[]> {
 
         return this.http.get(this.url).map(res => res.json());
     }
 
     //Cria ou Atualiza uma foto
-    cadastra(foto: FotoComponent): Observable<MensagemCadastro> {
+    cadastra(foto: Foto): Observable<MensagemCadastro> {
 
         const headers = this.headers;
         
@@ -51,7 +53,7 @@ export class FotoService {
         }
     }
 
-    remove(foto: FotoComponent) {
+    remove(foto: Foto) {
         return this.http.delete(this.url + '/' + foto._id);
     }
 

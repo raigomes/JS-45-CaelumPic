@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { Foto } from '../foto/foto';
 import { FotoComponent } from '../foto/foto.component';
 import { FotoService } from '../foto/foto.service';
 
@@ -11,7 +12,7 @@ import { FotoService } from '../foto/foto.service';
   templateUrl: './cadastro.component.html'
 })
 export class CadastroComponent {    
-    foto:FotoComponent = new FotoComponent();
+    foto:Foto = new Foto();
     service:FotoService;
     meuForm:FormGroup;
     route:ActivatedRoute;
@@ -57,7 +58,7 @@ export class CadastroComponent {
                     .subscribe(
                         res => {
                             this.mensagem = res.mensagem;
-                            this.foto = new FotoComponent();
+                            this.foto = new Foto();
                             
                             if(!res.inclusao) this.router.navigate(['']);
                         },

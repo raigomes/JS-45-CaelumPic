@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { Foto } from '../foto/foto';
 import { FotoComponent } from '../foto/foto.component';
 import { FotoService } from '../foto/foto.service';
 
@@ -23,7 +24,8 @@ export class ListagemComponent {
            });
   }
 
-  remove (foto:FotoComponent) {
+  // Atualizando para Foto
+  remove (foto:Foto) {
     this.service.remove(foto)
                 .subscribe(
                   () => {
@@ -41,11 +43,11 @@ export class ListagemComponent {
   }
 
   //Remove foto na tela sem fazer requisição
-  private removePhoto(foto:FotoComponent) : FotoComponent[] {
+  private removePhoto(foto:Foto) : Foto[] {
     let novasFotos = this.fotos.slice(0);
     let index = novasFotos.indexOf(foto);
     novasFotos.splice(index, 1);
 
-    return <FotoComponent[]> novasFotos;
+    return <Foto[]> novasFotos;
   }
 }
