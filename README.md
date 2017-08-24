@@ -3,6 +3,18 @@
 Photo App developed during JS-45 Caelum's course.
 Teacher Flavio Almeida (flavio.almeida@caelum.com.br)
 
+Topics after course:
+- ES6;
+- Typescript (language);
+- Rxjs (event, data, flow...);
+- API Rest;
+- Authentication;
+
+Links:
+PrimeNG: https://www.primefaces.org/primeng/#/
+AngularUI: https://angular-ui.github.io/
+Angular Style Guide: https://github.com/johnpapa/angular-styleguide
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 
 ## Development server
